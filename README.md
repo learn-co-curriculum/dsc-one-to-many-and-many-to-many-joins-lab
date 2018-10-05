@@ -14,21 +14,21 @@ You will be able to:
 # One-to-Many and Many-to-Many Joins
 <img src='Database-Schema.png' width=550>
 
-# Write a One-to-One join
+## Write a One-to-One Join
 
 
 ```python
 #Your code here
 ```
 
-# Write a One-to-Many join
+## Write a One-to-Many Join
 
 
 ```python
 # Your code here
 ```
 
-# Write a Many-to-Many join
+## Write a Many-to-Many Join
 
 
 ```python
