@@ -1,24 +1,40 @@
 
-# One to Many and Many to Many Joins
+# One-to-Many and Many-to-Many Joins - Lab
+
+## Introduction
+
+In this lab, you'll practice your knowledge on One-to-Many and Many-to-many relationships!
+
+## Objectives
+
+You will be able to:
+- Query data including Many-to-Many relationships
+- Write queries that make use of Join Tables
+
+# One-to-Many and Many-to-Many Joins
 <img src='Database-Schema.png' width=550>
 
-# Write a one to one join
+# Write a One-to-One join
 
 
 ```python
 #Your code here
 ```
 
-# Write a one to many join
+# Write a One-to-Many join
 
 
 ```python
 # Your code here
 ```
 
-# Write a many to many join
+# Write a Many-to-Many join
 
 
 ```python
 # Your code here
 ```
+
+## Summary
+
+In this lab, you practiced your knowledge on One-to-Many and Many-to-many relationships!
