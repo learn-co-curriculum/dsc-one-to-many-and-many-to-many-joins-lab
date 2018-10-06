@@ -41,7 +41,9 @@ Return a list of orders. For each order return a record for each order detail wi
 # Your code here
 ```
 
-## Write a Many-to-Many Join
+## Orders, Order details and Product Details (a Many-to-Many Join)
+
+Return a list of the orders with the the order information, and allthe product information for each product in the order. 
 
 
 ```python
