@@ -12,16 +12,29 @@ You will be able to:
 - Write queries that make use of Join Tables
 
 # One-to-Many and Many-to-Many Joins
-<img src='Database-Schema.png' width=550>
+<img src='database-schema.png' width=550>
 
-## Write a One-to-One Join
+## Employees and their Office (a One-to-One join)
+
+Return a list of all of the employees with their first name, last name and the city and state of the office that they work out of (if they have one). Include all employees and order them by their first name, then their last name.
 
 
 ```python
 #Your code here
 ```
 
-## Write a One-to-Many Join
+## Customers and their Orders (a One-to-Many join)
+
+Return a list of all of the customers. For each customer return a record for each of their order numbers, order dates and statuses.
+
+
+```python
+# Your code here
+```
+
+## Orders and their Order Details (another One-to-Many join)
+
+Return a list of orders. For each order return a record for each order detail within the order.
 
 
 ```python
