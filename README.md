@@ -12,7 +12,7 @@ You will be able to:
 - Write queries that make use of Join Tables
 
 ## One-to-Many and Many-to-Many Joins
-<img src='database-schema2.png' width=550>
+<img src='Database-Schema.png' width=550>
 
 ## Employees and their Office (a One-to-One join)
 
