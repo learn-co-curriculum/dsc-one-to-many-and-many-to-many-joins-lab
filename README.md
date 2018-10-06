@@ -11,7 +11,7 @@ You will be able to:
 - Query data including Many-to-Many relationships
 - Write queries that make use of Join Tables
 
-# One-to-Many and Many-to-Many Joins
+## One-to-Many and Many-to-Many Joins
 <img src='database-schema.png' width=550>
 
 ## Employees and their Office (a One-to-One join)
