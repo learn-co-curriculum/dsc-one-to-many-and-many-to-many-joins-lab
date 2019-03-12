@@ -3,13 +3,13 @@
 
 ## Introduction
 
-In this lab, you'll practice your knowledge on One-to-Many and Many-to-many relationships!
+In this lab, you'll practice your knowledge on one-to-many and many-to-many relationships!
 
 ## Objectives
 
 You will be able to:
-- Query data including Many-to-Many relationships
-- Write queries that make use of Join Tables
+- Query data using one-to-many and many-to-many joins
+- Predict the resulting size of one-to-many and many-to-many joins
 
 ## One-to-Many and Many-to-Many Joins
 <img src='Database-Schema.png' width=550>
@@ -52,4 +52,4 @@ Return a list of the orders with the the order information, and all the product 
 
 ## Summary
 
-In this lab, you practiced your knowledge on One-to-Many and Many-to-many relationships!
+In this lab, you practiced your knowledge on one-to-many and many-to-many relationships!
