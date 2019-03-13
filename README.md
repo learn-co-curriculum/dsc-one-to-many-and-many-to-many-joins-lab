@@ -14,6 +14,13 @@ You will be able to:
 ## One-to-Many and Many-to-Many Joins
 <img src='Database-Schema.png' width=550>
 
+## Connect to the Database
+
+
+```python
+#Your code here
+```
+
 ## Employees and their Office (a One-to-One join)
 
 Return a list of all of the employees with their first name, last name and the city and state of the office that they work out of (if they have one). Include all employees and order them by their first name, then their last name.
@@ -43,7 +50,9 @@ Return a list of orders. For each order return a record for each order detail wi
 
 ## Orders, Order details and Product Details (a Many-to-Many Join)
 
-Return a list of the orders with the the order information, and all the product information for each product in the order. 
+Return a list of customer first and last names, product names, quantities, and date ordered for each of the customers and each of their orders.
+
+Note: This will require joining 4 tables! This can be tricky! Give it a shot, and if you're still stuck, turn to the next section where you'll see how to write subqueries which can make complex queries such as this much simpler!
 
 
 ```python
