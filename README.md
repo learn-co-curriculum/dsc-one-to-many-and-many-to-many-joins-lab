@@ -32,16 +32,16 @@ Return a list of all of the employees with their first name, last name and the c
 
 ## Customers and their Orders (a One-to-Many join)
 
-Return a list of all of the customers. For each customer return a record for each of their order numbers, order dates and statuses.
+Return a list of all the customers first and last names along with a record for each of their order numbers, order dates and statuses.
 
 
 ```python
 # Your code here
 ```
 
-## Orders and their Order Details (another One-to-Many join)
+## Customers and their Payments (another One-to-Many join)
 
-Return a list of orders. For each order return a record for each order detail within the order.
+Return a list of customers first and last names along with details about their payments including the amount and date of payments. Sort these results in descending order by the payment amount.
 
 
 ```python
@@ -50,7 +50,7 @@ Return a list of orders. For each order return a record for each order detail wi
 
 ## Orders, Order details and Product Details (a Many-to-Many Join)
 
-Return a list of customer first and last names, product names, quantities, and date ordered for each of the customers and each of their orders.
+Return a list of customer first and last names, product names, quantities, and date ordered for each of the customers and each of their orders. Sort these in descending order by the order date.
 
 Note: This will require joining 4 tables! This can be tricky! Give it a shot, and if you're still stuck, turn to the next section where you'll see how to write subqueries which can make complex queries such as this much simpler!
 
