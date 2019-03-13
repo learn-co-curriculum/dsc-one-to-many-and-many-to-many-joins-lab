@@ -40,7 +40,8 @@ Return a list of all of the employees with their first name, last name and the c
 cur.execute("""select firstName, lastName, city, state
                         from employees e
                         join offices o
-                        using(officeCode);""")
+                        using(officeCode)
+                        order by firstName asc, lastName asc;""")
 df = pd.DataFrame(cur.fetchall())
 df.columns = [x[0] for x in cur.description]
 print('Number of results', len(df))
@@ -80,38 +81,38 @@ df.head()
   <tbody>
     <tr>
       <th>0</th>
+      <td>Andy</td>
+      <td>Fixter</td>
+      <td>Sydney</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Anthony</td>
+      <td>Bow</td>
+      <td>San Francisco</td>
+      <td>CA</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Barry</td>
+      <td>Jones</td>
+      <td>London</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
       <td>Diane</td>
       <td>Murphy</td>
       <td>San Francisco</td>
       <td>CA</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>Mary</td>
-      <td>Patterson</td>
-      <td>San Francisco</td>
-      <td>CA</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Jeff</td>
-      <td>Firrelli</td>
-      <td>San Francisco</td>
-      <td>CA</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>William</td>
-      <td>Patterson</td>
-      <td>Sydney</td>
-      <td></td>
-    </tr>
-    <tr>
       <th>4</th>
-      <td>Gerard</td>
-      <td>Bondur</td>
-      <td>Paris</td>
-      <td></td>
+      <td>Foon Yue</td>
+      <td>Tseng</td>
+      <td>NYC</td>
+      <td>NY</td>
     </tr>
   </tbody>
 </table>
@@ -121,7 +122,7 @@ df.head()
 
 ## Customers and their Orders (a One-to-Many join)
 
-Return a list of customers first and last names along with each of their order numbers, order dates and statuses.
+Return a list of customer first and last names along with each of their order numbers, order dates and statuses.
 
 
 ```python
@@ -215,6 +216,97 @@ df.head()
 
 
 
+## Customers and their Payments (another One-to-Many join)
+
+Return a list of customers first and last names along with details about their payments including the amount and date of payments. Sort these results in descending order by the payment amount.
+
+
+```python
+#Your code here
+cur.execute("""select contactFirstName, contactLastName,
+                      amount, paymentDate
+                      from customers c
+                      join payments
+                      using(customerNumber)
+                      order by amount desc;""")
+df = pd.DataFrame(cur.fetchall())
+df.columns = [x[0] for x in cur.description]
+print('Number of results', len(df))
+df.head()
+```
+
+    Number of results 273
+
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>contactFirstName</th>
+      <th>contactLastName</th>
+      <th>amount</th>
+      <th>paymentDate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Violeta</td>
+      <td>Benitez</td>
+      <td>9977.85</td>
+      <td>2003-11-08</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Ben</td>
+      <td>Calaghan</td>
+      <td>9821.32</td>
+      <td>2003-10-17</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Leslie</td>
+      <td>Taylor</td>
+      <td>9658.74</td>
+      <td>2004-12-06</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sean</td>
+      <td>Clenahan</td>
+      <td>9415.13</td>
+      <td>2004-07-28</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Roland</td>
+      <td>Mendel</td>
+      <td>8807.12</td>
+      <td>2005-05-03</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
 ## Orders, Order details and Product Details (a Many-to-Many Join)
 
 Return a list of customer first and last names, product names, quantities, and date ordered for each of the customers and each of their orders. 
@@ -232,7 +324,8 @@ cur.execute("""select contactFirstName, contactLastName,
                       join orderdetails od
                       using(orderNumber)
                       join products p 
-                      using (productCode);""")
+                      using (productCode)
+                      order by orderDate desc;""")
 df = pd.DataFrame(cur.fetchall())
 df.columns = [x[0] for x in cur.description]
 print('Number of results', len(df))
@@ -273,43 +366,43 @@ df.head()
   <tbody>
     <tr>
       <th>0</th>
-      <td>Carine</td>
-      <td>Schmitt</td>
-      <td>1965 Aston Martin DB5</td>
-      <td>26</td>
-      <td>2003-05-20</td>
+      <td>Janine</td>
+      <td>Labrune</td>
+      <td>1962 LanciaA Delta 16V</td>
+      <td>38</td>
+      <td>2005-05-31</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Carine</td>
-      <td>Schmitt</td>
-      <td>1999 Indy 500 Monte Carlo SS</td>
-      <td>46</td>
-      <td>2003-05-20</td>
+      <td>Janine</td>
+      <td>Labrune</td>
+      <td>1957 Chevy Pickup</td>
+      <td>33</td>
+      <td>2005-05-31</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Carine</td>
-      <td>Schmitt</td>
-      <td>1948 Porsche Type 356 Roadster</td>
-      <td>34</td>
-      <td>2003-05-20</td>
+      <td>Janine</td>
+      <td>Labrune</td>
+      <td>1998 Chrysler Plymouth Prowler</td>
+      <td>28</td>
+      <td>2005-05-31</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Carine</td>
-      <td>Schmitt</td>
-      <td>1966 Shelby Cobra 427 S/C</td>
-      <td>50</td>
-      <td>2003-05-20</td>
+      <td>Janine</td>
+      <td>Labrune</td>
+      <td>1964 Mercedes Tour Bus</td>
+      <td>38</td>
+      <td>2005-05-31</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Carine</td>
-      <td>Schmitt</td>
-      <td>1996 Moto Guzzi 1100i</td>
-      <td>39</td>
-      <td>2004-09-27</td>
+      <td>Janine</td>
+      <td>Labrune</td>
+      <td>1926 Ford Fire Engine</td>
+      <td>19</td>
+      <td>2005-05-31</td>
     </tr>
   </tbody>
 </table>
