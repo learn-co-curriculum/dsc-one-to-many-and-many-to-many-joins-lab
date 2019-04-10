@@ -1,5 +1,5 @@
 
-# One to Many and Many to Many Joins
+# One to Many and Many to Many Joins - Lab
 
 
 ## Introduction
@@ -14,7 +14,7 @@ You will be able to:
 * Predict the resulting size of one-to-many and many-to-many joins
 
 
-<img src='Database-Schema.png' width=550>
+<img src='images/Database-Schema.png' width="600">
 
 ## Connect to the Database
 
