@@ -1,19 +1,17 @@
 
-# One to Many and Many to Many Joins - Lab
-
+# One-to-Many and Many-to-Many Joins - Lab
 
 ## Introduction
 
 In this lab, you'll practice your knowledge on one-to-many and many-to-many relationships!
 
-## Objectives 
+## Objectives
 
 You will be able to:
+- Query data using one-to-many and many-to-many joins
+- Predict the resulting size of one-to-many and many-to-many joins
 
-* Query data using one-to-many and many-to-many joins
-* Predict the resulting size of one-to-many and many-to-many joins
-
-
+## One-to-Many and Many-to-Many Joins
 <img src='images/Database-Schema.png' width="600">
 
 ## Connect to the Database
@@ -122,7 +120,7 @@ df.head()
 
 ## Customers and their Orders (a One-to-Many join)
 
-Return a list of customer first and last names along with each of their order numbers, order dates and statuses.
+Return a list of all the customers first and last names along with a record for each of their order numbers, order dates and statuses.
 
 
 ```python
@@ -309,7 +307,7 @@ df.head()
 
 ## Orders, Order details and Product Details (a Many-to-Many Join)
 
-Return a list of customer first and last names, product names, quantities, and date ordered for each of the customers and each of their orders. 
+Return a list of customer first and last names, product names, quantities, and date ordered for each of the customers and each of their orders. Sort these in descending order by the order date.
 
 Note: This will require joining 4 tables! This can be tricky! Give it a shot, and if you're still stuck, turn to the next section where you'll see how to write subqueries which can make complex queries such as this much simpler!
 
@@ -412,4 +410,4 @@ df.head()
 
 ## Summary
 
-In this lab, you practiced your knowledge on One-to-Many and Many-to-many relationships!
+In this lab, you practiced your knowledge on one-to-many and many-to-many relationships!
