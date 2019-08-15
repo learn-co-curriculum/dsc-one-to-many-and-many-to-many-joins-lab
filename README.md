@@ -37,7 +37,7 @@ cur = conn.cursor()
 
 ## Employees and their Office (a One-to-One join)
 
-Return a list of all of the employees with their first name, last name and the city and state of the office that they work out of (if they have one). Include all employees and order them by their first name, then their last name.
+Return a dataframe with all of the employees including their first name and last name along with the city and state of the office that they work out of (if they have one). Include all employees and order them by their first name, then their last name.
 
 
 ```python
@@ -48,18 +48,18 @@ Return a list of all of the employees with their first name, last name and the c
 ```python
 # __SOLUTION__ 
 # Your code here
-cur.execute("""select firstName, lastName, city, state
-                        from employees e
-                        join offices o
-                        using(officeCode)
-                        order by firstName asc, lastName asc;""")
+cur.execute("""SELECT firstName, lastName, city, state
+               FROM employees
+               JOIN offices
+               USING(officeCode)
+               ORDER BY firstName ASC, lastName ASC;""")
 df = pd.DataFrame(cur.fetchall())
 df.columns = [x[0] for x in cur.description]
-print('Number of results', len(df))
+print('Total number of results:', len(df))
 df.head()
 ```
 
-    Number of results 23
+    Total number of results: 23
 
 
 
@@ -133,7 +133,7 @@ df.head()
 
 ## Customers and their Orders (a One-to-Many join)
 
-Return a list of all the customers first and last names along with a record for each of their order numbers, order dates and statuses.
+Return a dataframe with all of the customers' first and last names along with details for each of their order numbers, order dates, and statuses.
 
 
 ```python
@@ -144,18 +144,17 @@ Return a list of all the customers first and last names along with a record for 
 ```python
 # __SOLUTION__ 
 #Your code here
-cur.execute("""select contactFirstName, contactLastName,
-                      orderNumber, orderDate, status
-                      from customers
-                      join orders
-                      using(customerNumber);""")
+cur.execute("""SELECT contactFirstName, contactLastName, orderNumber, orderDate, status
+               FROM customers
+               JOIN orders
+               USING(customerNumber);""")
 df = pd.DataFrame(cur.fetchall())
 df.columns = [x[0] for x in cur.description]
-print('Number of results', len(df))
+print('Total number of results:', len(df))
 df.head()
 ```
 
-    Number of results 326
+    Total number of results: 326
 
 
 
@@ -235,7 +234,7 @@ df.head()
 
 ## Customers and their Payments (another One-to-Many join)
 
-Return a list of customers first and last names along with details about their payments including the amount and date of payments. Sort these results in descending order by the payment amount.
+Return a dataframe with all of the customers' first and last names along with details about their payments' amount and date of payment. Sort these results in descending order by the payment amount.
 
 
 ```python
@@ -246,19 +245,18 @@ Return a list of customers first and last names along with details about their p
 ```python
 # __SOLUTION__ 
 #Your code here
-cur.execute("""select contactFirstName, contactLastName,
-                      amount, paymentDate
-                      from customers c
-                      join payments
-                      using(customerNumber)
-                      order by amount desc;""")
+cur.execute("""SELECT contactFirstName, contactLastName, amount, paymentDate
+               FROM customers
+               JOIN payments
+               USING(customerNumber)
+               ORDER BY amount DESC;""")
 df = pd.DataFrame(cur.fetchall())
 df.columns = [x[0] for x in cur.description]
-print('Number of results', len(df))
+print('Total number of results:', len(df))
 df.head()
 ```
 
-    Number of results 273
+    Total number of results: 273
 
 
 
@@ -332,9 +330,9 @@ df.head()
 
 ## Orders, Order details and Product Details (a Many-to-Many Join)
 
-Return a list of customer first and last names, product names, quantities, and date ordered for each of the customers and each of their orders. Sort these in descending order by the order date.
+Return a dataframe with all of the customers' first and last names along with the product names, quantities, and date ordered for each of the customers and each of their orders. Sort these in descending order by the order date.
 
-Note: This will require joining 4 tables! This can be tricky! Give it a shot, and if you're still stuck, turn to the next section where you'll see how to write subqueries which can make complex queries such as this much simpler!
+- Note: This will require joining 4 tables! This can be tricky! Give it a shot, and if you're still stuck, turn to the next section where you'll see how to write subqueries which can make complex queries such as this much simpler!
 
 
 ```python
@@ -345,23 +343,22 @@ Note: This will require joining 4 tables! This can be tricky! Give it a shot, an
 ```python
 # __SOLUTION__ 
 #Your code here
-cur.execute("""select contactFirstName, contactLastName,
-                      productName, quantityOrdered, orderDate
-                      from customers c
-                      join orders o
-                      using(customerNumber)
-                      join orderdetails od
-                      using(orderNumber)
-                      join products p 
-                      using (productCode)
-                      order by orderDate desc;""")
+cur.execute("""SELECT contactFirstName, contactLastName, productName, quantityOrdered, orderDate
+               FROM customers
+               JOIN orders
+               USING(customerNumber)
+               JOIN orderdetails
+               USING(orderNumber)
+               JOIN products
+               USING (productCode)
+               ORDER BY orderDate DESC;""")
 df = pd.DataFrame(cur.fetchall())
 df.columns = [x[0] for x in cur.description]
-print('Number of results', len(df))
+print('Total number of results:', len(df))
 df.head()
 ```
 
-    Number of results 2996
+    Total number of results: 2996
 
 
 
