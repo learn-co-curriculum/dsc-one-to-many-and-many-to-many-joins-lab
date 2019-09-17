@@ -3,7 +3,7 @@
 
 ## Introduction
 
-In this lab, you'll practice your knowledge on one-to-many and many-to-many relationships!
+In this lab, you'll practice your knowledge of one-to-many and many-to-many relationships!
 
 ## Objectives
 
@@ -52,7 +52,7 @@ Return a dataframe with all of the customers' first and last names along with de
 
 Return a dataframe with all of the customers' first and last names along with the product names, quantities, and date ordered for each of the customers and each of their orders. Sort these in descending order by the order date.
 
-- Note: This will require joining 4 tables! This can be tricky! Give it a shot, and if you're still stuck, turn to the next section where you'll see how to write subqueries which can make complex queries such as this much simpler!
+- Note: This will require joining 4 tables! This can be tricky! Give it a shot, and if you're still stuck, turn to the next section where you'll see how to write subqueries that can make complex queries such as this much simpler!
 
 
 ```python
@@ -61,4 +61,4 @@ Return a dataframe with all of the customers' first and last names along with th
 
 ## Summary
 
-In this lab, you practiced your knowledge on one-to-many and many-to-many relationships!
+In this lab, you practiced your knowledge of one-to-many and many-to-many relationships!
