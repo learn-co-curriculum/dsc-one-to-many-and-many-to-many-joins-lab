@@ -8,8 +8,8 @@ In this lab, you'll practice your knowledge of one-to-many and many-to-many rela
 ## Objectives
 
 You will be able to:
-- Query data using one-to-many and many-to-many joins
-- Predict the resulting size of one-to-many and many-to-many joins
+* Explain one-to-many and many-to-many joins as well as implications for the size of query results
+* Query data using one-to-many and many-to-many joins
 
 ## One-to-Many and Many-to-Many Joins
 <img src='images/Database-Schema.png' width="600">
