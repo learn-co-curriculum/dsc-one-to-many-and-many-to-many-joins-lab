@@ -30,16 +30,15 @@ cur = conn.cursor()
 
 ## Employees and their Office (a One-to-One join)
 
-Return a dataframe with all of the employees including their first name and last name along with the city and state of the office that they work out of (if they have one). Include all employees and order them by their first name, then their last name.
+Return a DataFrame with all of the employees including their first name and last name along with the city and state of the office that they work out of (if they have one). Include all employees and order them by their first name, then their last name.
 
 
 ```python
-# Your code here
 cur.execute("""SELECT firstName, lastName, city, state
                FROM employees
                JOIN offices
                USING(officeCode)
-               ORDER BY firstName ASC, lastName ASC;""")
+               ORDER BY firstName, lastName;""")
 df = pd.DataFrame(cur.fetchall())
 df.columns = [x[0] for x in cur.description]
 print('Total number of results:', len(df))
@@ -120,11 +119,10 @@ df.head()
 
 ## Customers and their Orders (a One-to-Many join)
 
-Return a dataframe with all of the customers' first and last names along with details for each of their order numbers, order dates, and statuses.
+Return a DataFrame with all of the customer contacts (first and last names) along with details for each of the customers' order numbers, order dates, and statuses.
 
 
 ```python
-#Your code here
 cur.execute("""SELECT contactFirstName, contactLastName, orderNumber, orderDate, status
                FROM customers
                JOIN orders
@@ -215,11 +213,10 @@ df.head()
 
 ## Customers and their Payments (another One-to-Many join)
 
-Return a dataframe with all of the customers' first and last names along with details about their payments' amount and date of payment. Sort these results in descending order by the payment amount.
+Return a DataFrame with all of the customer contacts (first and last names) along with details for each of the customers' payment amounts and date of payment. Sort these results in descending order by the payment amount. 
 
 
 ```python
-#Your code here
 cur.execute("""SELECT contactFirstName, contactLastName, amount, paymentDate
                FROM customers
                JOIN payments
@@ -264,38 +261,38 @@ df.head()
   <tbody>
     <tr>
       <th>0</th>
-      <td>Violeta</td>
-      <td>Benitez</td>
-      <td>9977.85</td>
-      <td>2003-11-08</td>
+      <td>Diego</td>
+      <td>Freyre</td>
+      <td>120166.58</td>
+      <td>2005-03-18</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Ben</td>
-      <td>Calaghan</td>
-      <td>9821.32</td>
-      <td>2003-10-17</td>
+      <td>Diego</td>
+      <td>Freyre</td>
+      <td>116208.40</td>
+      <td>2004-12-31</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Leslie</td>
-      <td>Taylor</td>
-      <td>9658.74</td>
-      <td>2004-12-06</td>
+      <td>Susan</td>
+      <td>Nelson</td>
+      <td>111654.40</td>
+      <td>2003-08-15</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Sean</td>
-      <td>Clenahan</td>
-      <td>9415.13</td>
-      <td>2004-07-28</td>
+      <td>Eric</td>
+      <td>Natividad</td>
+      <td>105743.00</td>
+      <td>2003-12-26</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Roland</td>
-      <td>Mendel</td>
-      <td>8807.12</td>
-      <td>2005-05-03</td>
+      <td>Susan</td>
+      <td>Nelson</td>
+      <td>101244.59</td>
+      <td>2005-03-05</td>
     </tr>
   </tbody>
 </table>
@@ -303,15 +300,14 @@ df.head()
 
 
 
-## Orders, Order details and Product Details (a Many-to-Many Join)
+## Orders, Order details, and Product Details (a Many-to-Many Join)
 
-Return a dataframe with all of the customers' first and last names along with the product names, quantities, and date ordered for each of the customers and each of their orders. Sort these in descending order by the order date.
+Return a DataFrame with all of the customer contacts (first and last names) along with the product names, quantities, and date ordered for each of the customers and each of their orders. Sort these in descending order by the order date.
 
-- Note: This will require joining 4 tables! This can be tricky! Give it a shot, and if you're still stuck, turn to the next section where you'll see how to write subqueries that can make complex queries such as this much simpler!
+> Note: This will require joining 4 tables! This can be tricky! Give it a shot, and if you're still stuck, turn to the next section where you'll see how to write subqueries that can make complex queries such as this much simpler!
 
 
 ```python
-#Your code here
 cur.execute("""SELECT contactFirstName, contactLastName, productName, quantityOrdered, orderDate
                FROM customers
                JOIN orders
