@@ -1,4 +1,3 @@
-
 # One-to-Many and Many-to-Many Joins - Lab
 
 ## Introduction
@@ -16,6 +15,8 @@ You will be able to:
 
 ## Connect to the Database
 
+Include the relevant imports, then connect to the database located at `data.sqlite`.
+
 
 ```python
 # Your code here
@@ -32,12 +33,11 @@ import pandas as pd
 ```python
 # __SOLUTION__ 
 conn = sqlite3.connect('data.sqlite')
-cur = conn.cursor()
 ```
 
-## Employees and their Office (a One-to-One join)
+## Employees and Their Offices (a One-to-One Join)
 
-Return a DataFrame with all of the employees including their first name and last name along with the city and state of the office that they work out of (if they have one). Include all employees and order them by their first name, then their last name.
+Select all of the employees including their first name and last name along with the city and state of the office that they work out of (if they have one). Include all employees and order them by their first name, then their last name.
 
 
 ```python
@@ -47,13 +47,15 @@ Return a DataFrame with all of the employees including their first name and last
 
 ```python
 # __SOLUTION__ 
-cur.execute("""SELECT firstName, lastName, city, state
-               FROM employees
-               JOIN offices
-               USING(officeCode)
-               ORDER BY firstName, lastName;""")
-df = pd.DataFrame(cur.fetchall())
-df.columns = [x[0] for x in cur.description]
+q = """
+SELECT firstName, lastName, city, state
+FROM employees
+JOIN offices
+    USING(officeCode)
+ORDER BY firstName, lastName
+;
+"""
+df = pd.read_sql(q, conn)
 print('Total number of results:', len(df))
 df.head()
 ```
@@ -130,9 +132,9 @@ df.head()
 
 
 
-## Customers and their Orders (a One-to-Many join)
+## Customers and Their Orders (a One-to-Many Join)
 
-Return a DataFrame with all of the customer contacts (first and last names) along with details for each of the customers' order numbers, order dates, and statuses.
+Select all of the customer contacts (first and last names) along with details for each of the customers' order numbers, order dates, and statuses.
 
 
 ```python
@@ -142,12 +144,19 @@ Return a DataFrame with all of the customer contacts (first and last names) alon
 
 ```python
 # __SOLUTION__ 
-cur.execute("""SELECT contactFirstName, contactLastName, orderNumber, orderDate, status
-               FROM customers
-               JOIN orders
-               USING(customerNumber);""")
-df = pd.DataFrame(cur.fetchall())
-df.columns = [x[0] for x in cur.description]
+q = """
+SELECT
+    contactFirstName,
+    contactLastName,
+    orderNumber,
+    orderDate,
+    status
+FROM customers
+JOIN orders
+    USING(customerNumber)
+;
+"""
+df = pd.read_sql(q, conn)
 print('Total number of results:', len(df))
 df.head()
 ```
@@ -230,9 +239,9 @@ df.head()
 
 
 
-## Customers and their Payments (another One-to-Many join)
+## Customers and Their Payments (Another One-to-Many Join)
 
-Return a DataFrame with all of the customer contacts (first and last names) along with details for each of the customers' payment amounts and date of payment. Sort these results in descending order by the payment amount. 
+Select all of the customer contacts (first and last names) along with details for each of the customers' payment amounts and date of payment. Sort these results in descending order by the payment amount. 
 
 
 ```python
@@ -242,13 +251,19 @@ Return a DataFrame with all of the customer contacts (first and last names) alon
 
 ```python
 # __SOLUTION__ 
-cur.execute("""SELECT contactFirstName, contactLastName, amount, paymentDate
-               FROM customers
-               JOIN payments
-               USING(customerNumber)
-               ORDER BY amount DESC;""")
-df = pd.DataFrame(cur.fetchall())
-df.columns = [x[0] for x in cur.description]
+q = """
+SELECT
+    contactFirstName,
+    contactLastName,
+    amount,
+    paymentDate
+FROM customers
+JOIN payments
+    USING(customerNumber)
+ORDER BY amount DESC
+;
+"""
+df = pd.read_sql(q, conn)
 print('Total number of results:', len(df))
 df.head()
 ```
@@ -325,9 +340,9 @@ df.head()
 
 
 
-## Orders, Order details, and Product Details (a Many-to-Many Join)
+## Orders, Order Details, and Product Details (a Many-to-Many Join)
 
-Return a DataFrame with all of the customer contacts (first and last names) along with the product names, quantities, and date ordered for each of the customers and each of their orders. Sort these in descending order by the order date.
+Select all of the customer contacts (first and last names) along with the product names, quantities, and date ordered for each of the customers and each of their orders. Sort these in descending order by the order date.
 
 > Note: This will require joining 4 tables! This can be tricky! Give it a shot, and if you're still stuck, turn to the next section where you'll see how to write subqueries that can make complex queries such as this much simpler!
 
@@ -339,17 +354,23 @@ Return a DataFrame with all of the customer contacts (first and last names) alon
 
 ```python
 # __SOLUTION__ 
-cur.execute("""SELECT contactFirstName, contactLastName, productName, quantityOrdered, orderDate
-               FROM customers
-               JOIN orders
-               USING(customerNumber)
-               JOIN orderdetails
-               USING(orderNumber)
-               JOIN products
-               USING (productCode)
-               ORDER BY orderDate DESC;""")
-df = pd.DataFrame(cur.fetchall())
-df.columns = [x[0] for x in cur.description]
+q = """
+SELECT
+    contactFirstName,
+    contactLastName,
+    productName,
+    quantityOrdered,
+    orderDate
+FROM customers
+JOIN orders
+    USING(customerNumber)
+JOIN orderdetails
+    USING(orderNumber)
+JOIN products
+    USING (productCode)
+ORDER BY orderDate DESC
+;"""
+df = pd.read_sql(q, conn)
 print('Total number of results:', len(df))
 df.head()
 ```
