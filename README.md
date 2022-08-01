@@ -7,6 +7,7 @@ In this lab, you'll practice your knowledge of one-to-many and many-to-many rela
 ## Objectives
 
 You will be able to:
+
 * Explain one-to-many and many-to-many joins as well as implications for the size of query results
 * Query data using one-to-many and many-to-many joins
 
