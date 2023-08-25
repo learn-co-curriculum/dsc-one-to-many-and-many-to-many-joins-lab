@@ -12,7 +12,7 @@ You will be able to:
 * Query data using one-to-many and many-to-many joins
 
 ## One-to-Many and Many-to-Many Joins
-<img src='images/Database-Schema.png' width="600">
+<img src='https://curriculum-content.s3.amazonaws.com/data-science/images/Database-Schema.png' width="600">
 
 ## Connect to the Database
 
